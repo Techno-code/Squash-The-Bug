@@ -58,8 +58,11 @@ class Button():
 
 # Setting up Main Loop
 
-window = pygame.display.set_mode((800, 600))
+window = pygame.display.set_mode((800, 950))
 clock = pygame.time.Clock()
+background_color = (31, 31, 36)
+border_color = (156, 141, 140)
+border_coords = (10, 820, 780, 120)
 run = True
 
 # Main Loop
@@ -71,8 +74,11 @@ while run:
         if event.type == pygame.QUIT:
             run = False
         
-    window.fill((255, 255, 255))
+    window.fill(background_color)
 
+    # Level 1 test
+
+    pygame.draw.rect(window, border_color, border_coords, 5) # width border = 5
 
     render_text(window, "test", Point(700, 525))
 
