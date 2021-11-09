@@ -56,3 +56,29 @@ class Button():
                 # Write code in the main event loop if the button.on_click(event) is true
                 return True
 
+# Setting up Main Loop
+
+window = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
+run = True
+
+# Main Loop
+
+while run:
+
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            run = False
+        
+    window.fill((255, 255, 255))
+
+
+    render_text(window, "test", Point(700, 525))
+
+    # Update the screen display
+    pygame.display.flip()
+    # Update frames; necessary for the textbox to work
+    clock.tick(60)
+
+pygame.quit()
