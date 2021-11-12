@@ -36,14 +36,15 @@ class Point():
         self.y = y
 
 class Goal():
-    def __init__(self, x, y, len, wid):
+    def __init__(self, x, y, height, width):
         self.x = x
         self.y = y
-        self.len = len
-        self.wid = wid
+        self.height = height
+        self.width = width
 
-    def render(self, window, border_color, border_coords):
-        pygame.draw.rect(window, border_color, border_coords, 5)
+    def render(self, window, border_color):
+        pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
+        
 
 
 # Button Class
