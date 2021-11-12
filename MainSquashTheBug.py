@@ -29,11 +29,19 @@ def render_text(window, text, point):
 
 # A point class
 
-class Point():
 
+class Point():
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+class Goal():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def render(self, window, border_color, border_coords):
+        pygame.draw.rect(window, border_color, border_coords, 5)
 
 # Button Class
 
@@ -78,7 +86,7 @@ while run:
 
     # Level 1 test
 
-    pygame.draw.rect(window, border_color, border_coords, 5) # width border = 5
+     # width border = 5
 
     render_text(window, "test", Point(700, 525))
 
