@@ -16,12 +16,17 @@ def render_image(window, img_path, point):
     window.blit(img, (point.x, point.y))
 
 # Adding Text
+class Point():
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-def render_text(window, text, point):
 
-    font = pygame.font.SysFont("arial", 20)
-    text = font.render(text, True, (0, 0, 0))
-
+def render_text(window, text, point, font_size, font_colour):
+    
+    font = pygame.font.SysFont("arial", font_size)
+    text = font.render(text, True, font_colour)
     text_rect = text.get_rect()
     text_rect.center = (point.x, point.y)
 
@@ -29,11 +34,7 @@ def render_text(window, text, point):
 
 # A point class
 
-class Point():
 
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
 
 # Button Class
 
@@ -80,7 +81,7 @@ while run:
 
     pygame.draw.rect(window, border_color, border_coords, 5) # width border = 5
 
-    render_text(window, "test", Point(700, 525))
+    render_text(window, "test", Point(700, 525), 30, (0,0,0))
 
     # Update the screen display
     pygame.display.flip()
