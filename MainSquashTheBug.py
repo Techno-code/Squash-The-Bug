@@ -18,7 +18,7 @@ def render_image(window, img_path, point):
 # Adding Text
 
 def render_text(window, text, point):
-
+    
     font = pygame.font.SysFont("arial", 20)
     text = font.render(text, True, (0, 0, 0))
 
