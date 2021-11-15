@@ -17,10 +17,10 @@ def render_image(window, img_path, point):
 
 # Adding Text
 
-def render_text(window, text, point):
+def render_text(window, text, point, font_size, font_colour):
     
-    font = pygame.font.SysFont("arial", 20)
-    text = font.render(text, True, (0, 0, 0))
+    font = pygame.font.SysFont("arial", font_size)
+    text = font.render(text, True, font_colour)
 
     text_rect = text.get_rect()
     text_rect.center = (point.x, point.y)
@@ -43,9 +43,9 @@ class Goal():
         self.width = width
         self.border_color = border_color
 
-    def render(self, window):
+    def render(self, window, text):
         pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
-        render_text()
+        render_text(window, text, )
         
 
 
