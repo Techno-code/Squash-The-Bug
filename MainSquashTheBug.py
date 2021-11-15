@@ -45,7 +45,7 @@ class Goal():
 
     def render(self, window, text):
         pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
-        render_text(window, text, (200, 200), 20, (0,0,0))
+        render_text(window, text, Point(200,200), 20, (0,0,0))
         
 
 
@@ -77,6 +77,7 @@ clock = pygame.time.Clock()
 background_color = (31, 31, 36)
 border_color = (156, 141, 140)
 border_coords = (10, 820, 780, 120)
+test_goal = Goal(100, 100, 100, 100, (255,255,255))
 run = True
 
 # Main Loop
@@ -94,7 +95,8 @@ while run:
 
      # width border = 5
 
-    render_text(window, "test", Point(700, 525))
+    
+    test_goal.render(window, "Hello World")
 
     # Update the screen display
     pygame.display.flip()
