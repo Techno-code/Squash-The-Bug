@@ -36,14 +36,16 @@ class Point():
         self.y = y
 
 class Goal():
-    def __init__(self, x, y, height, width):
+    def __init__(self, x, y, height, width, border_color):
         self.x = x
         self.y = y
         self.height = height
         self.width = width
+        self.border_color = border_color
 
-    def render(self, window, border_color):
+    def render(self, window):
         pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
+        render_text()
         
 
 
