@@ -45,7 +45,7 @@ class Goal():
 
     def render(self, window, text):
         pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
-        render_text(window, text, )
+        render_text(window, text, (200, 200), 20, (0,0,0))
         
 
 
