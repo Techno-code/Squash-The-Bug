@@ -1,0 +1,9 @@
+Level 1:
+
+Bugged Version:
+print("Hello World')
+
+Goal: Print "Hello World" 
+
+Solution:
+print("Hello World")

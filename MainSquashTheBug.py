@@ -32,8 +32,34 @@ def render_text(window, text, point, font_size, font_colour):
 
     window.blit(text, text_rect)
 
+
+
+
+
+
 # A point class
 
+
+
+class Point():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+class Goal():
+    def __init__(self, x, y, height, width, border_color, font_colour, text):
+        self.x = x
+        self.y = y
+        self.height = height
+        self.width = width
+        self.border_color = border_color
+        self.text = text
+        self.font_colour = font_colour
+        self.font = "arial"
+        self.font_size = 15
+
+    def render_goal(self, window):
+        pygame.draw.rect(window, self.border_color, (self.x, self.y, self.width, self.height), 5)
 
 
 # Button Class
