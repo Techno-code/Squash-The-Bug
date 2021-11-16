@@ -36,16 +36,57 @@ class Point():
         self.y = y
 
 class Goal():
-    def __init__(self, x, y, height, width, border_color):
+    def __init__(self, x, y, height, width, border_color, font_colour, text):
         self.x = x
         self.y = y
         self.height = height
         self.width = width
         self.border_color = border_color
+        self.text = text
+        self.font_colour = font_colour
+        self.font = "arial"
+        self.font_size = 15
 
-    def render(self, window, text):
-        pygame.draw.rect(window, border_color, (self.x, self.y, self.width, self.height), 5)
-        render_text(window, text, Point(200,200), 20, (0,0,0))
+    def render_goal(self, window):
+        rect = pygame.draw.rect(window, self.border_color, (self.x, self.y, self.width, self.height), 5)
+        y = rect.top
+        lineSpacing = -2
+        aa=False
+        bkg=None
+        font = pygame.font.SysFont("arial", self.font_size)
+
+        # get the height of the font
+        fontHeight = font.size("Tg")[1]
+
+        while self.text:
+            i = 1
+
+            # determine if the row of text will be outside our area
+            if y + fontHeight > rect.bottom:
+                break
+
+            # determine maximum width of line
+            while font.size(self.text[:i])[0] < rect.width and i < len(self.text):
+                i += 1
+
+            # if we've wrapped the text, then adjust the wrap to the last word      
+            if i < len(self.text): 
+                i = self.text.rfind(" ", 0, i) + 1
+
+            # render the line and blit it to the surface
+            if bkg:
+                image = font.render(self.text[:i], 1, self.font_colour, bkg)
+                image.set_colorkey(bkg)
+            else:
+                image = font.render(self.text[:i], aa, self.font_colour)
+
+            window.blit(image, (rect.left, y))
+            y += fontHeight + lineSpacing
+
+            # remove the text we just blitted
+            self.text = self.text[i:]
+
+        render_text(window, self.text, Point(self.x, self.y), self.font_size, self.font_colour)
         
 
 
@@ -77,7 +118,7 @@ clock = pygame.time.Clock()
 background_color = (31, 31, 36)
 border_color = (156, 141, 140)
 border_coords = (10, 820, 780, 120)
-test_goal = Goal(100, 100, 100, 100, (255,255,255))
+test_goal = Goal(100, 100, 400, 80, (0,0,0), (0,0,0), "Testing Idk if this can work but here we go")
 run = True
 
 # Main Loop
@@ -96,7 +137,7 @@ while run:
      # width border = 5
 
     
-    test_goal.render(window, "Hello World")
+    test_goal.render_goal(window)
 
     # Update the screen display
     pygame.display.flip()
