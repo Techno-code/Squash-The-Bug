@@ -120,12 +120,12 @@ window = pygame.display.set_mode((800, 950))
 clock = pygame.time.Clock()
 background_color = (31, 31, 36)
 border_color = (156, 141, 140)
-text_color = (255,255,0)
+text_color = (15, 185, 191)
 borderx = 10 
 bordery = 820
 width = 780
 height = 120
-test_goal = Goal(borderx, bordery, height, width, border_color, text_color, 25, "Hello this is a test please test work thank you")
+level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 25, "Hello this is a test please test work thank you")
 run = True
 
 # Main Loop
@@ -141,7 +141,7 @@ while run:
 
     # Level 1 test
 
-    test_goal.render_goal(window)
+    level1_goal.render_goal(window)
 
     # Update the screen display
     pygame.display.flip()
