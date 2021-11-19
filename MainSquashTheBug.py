@@ -125,7 +125,7 @@ borderx = 10
 bordery = 820
 width = 780
 height = 120
-level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 25, "Goal: Print Out Hello World")
+level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 run = True
 
 # Main Loop
