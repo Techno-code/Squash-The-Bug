@@ -117,7 +117,7 @@ class Button():
 # Sticky Note Class
 class Text_Box():
     
-    def __init__(self, tl_point):
+    def __init__(self, tl_point, user_text):
         # Positioning
         self.tl_point = tl_point
         self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
@@ -129,18 +129,23 @@ class Text_Box():
         self.color_passive = pygame.Color('lightgray')
         self.color = self.color_passive
         self.active = False
+        self.backspaced = False
         # Render text
-        self.user_text = ""
+        self.user_text = user_text
         self.base_font = pygame.font.Font(None, 32)
 
     def check_event(self, event):
         if event.type == pygame.KEYDOWN:
-            if self.active and event.key == pygame.K_BACKSPACE:
+            if self.active and event.key == pygame.K_BACKSPACE and self.backspaced == False:
                 # Get text input from 0 to -1 i.e. end
                 self.user_text = self.user_text[:-1]
+                self.backspaced = True
             else:
                 if self.active == True:
                     self.user_text += event.unicode
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_BACKSPACE:
+                self.backspaced = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.input_rect.collidepoint(event.pos):
                 self.active = True
@@ -176,22 +181,35 @@ bordery = 820
 width = 780
 height = 120
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
+level1_code = Text_Box(Point(25,50), """print("Hello World')""")
+code_list = [level1_code]
 run = True
 
 # Main Loop
 
 while run:
 
+    
+
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             run = False
+        for text_box in code_list:
+            text_box.check_event(event)
         
+
     window.fill(background_color)
+
+    for text_box in code_list:
+        text_box.check_event(event)
 
     # Level 1 test
 
     level1_goal.render_goal(window)
+    for text_box in code_list:
+        text_box.render(window)
+    
 
     # Update the screen display
     pygame.display.flip()
