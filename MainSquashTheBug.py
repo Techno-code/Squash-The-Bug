@@ -114,6 +114,56 @@ class Button():
                 # Write code in the main event loop if the button.on_click(event) is true
                 return True
 
+# Sticky Note Class
+class Text_Box():
+    
+    def __init__(self, tl_point):
+        # Positioning
+        self.tl_point = tl_point
+        self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
+        # Render colors
+        self.surface = pygame.Surface((140, 32))
+        self.surface.set_alpha(0)
+        self.surface.fill((255,255,255))
+        self.color_active = pygame.Color('darkgray')
+        self.color_passive = pygame.Color('lightgray')
+        self.color = self.color_passive
+        self.active = False
+        # Render text
+        self.user_text = ""
+        self.base_font = pygame.font.Font(None, 32)
+
+    def check_event(self, event):
+        if event.type == pygame.KEYDOWN:
+            if self.active and event.key == pygame.K_BACKSPACE:
+                # Get text input from 0 to -1 i.e. end
+                self.user_text = self.user_text[:-1]
+            else:
+                if self.active == True:
+                    self.user_text += event.unicode
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.input_rect.collidepoint(event.pos):
+                self.active = True
+                self.color = self.color_active
+            elif not self.input_rect.collidepoint(event.pos):
+                self.active = False
+                self.color = self.color_passive
+
+    def render(self, window):
+        # pygame.draw.rect(window, self.color, self.input_rect)
+        window.blit(self.surface, (self.input_rect.left, self.input_rect.top))
+        text_surface = self.base_font.render(self.user_text, True, (255, 255, 255))
+        window.blit(text_surface, (self.input_rect.x + 5, self.input_rect.y + 5))
+        self.input_rect.w = max(100, text_surface.get_width() + 10)
+
+    def get_current_text(self):
+        return self.user_text
+
+    def update_position(self, n_point):
+        self.tl_point = n_point
+        self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
+
+
 # Setting up Main Loop
 
 window = pygame.display.set_mode((800, 950))
