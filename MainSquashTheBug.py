@@ -114,6 +114,61 @@ class Button():
                 # Write code in the main event loop if the button.on_click(event) is true
                 return True
 
+# Sticky Note Class
+class Text_Box():
+    
+    def __init__(self, tl_point, user_text):
+        # Positioning
+        self.tl_point = tl_point
+        self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
+        # Render colors
+        self.surface = pygame.Surface((140, 32))
+        self.surface.set_alpha(0)
+        self.surface.fill((255,255,255))
+        self.color_active = pygame.Color('darkgray')
+        self.color_passive = pygame.Color('lightgray')
+        self.color = self.color_passive
+        self.active = False
+        self.backspaced = False
+        # Render text
+        self.user_text = user_text
+        self.base_font = pygame.font.Font(None, 45)
+
+    def check_event(self, event):
+        if event.type == pygame.KEYDOWN:
+            if self.active and event.key == pygame.K_BACKSPACE and self.backspaced == False:
+                # Get text input from 0 to -1 i.e. end
+                self.user_text = self.user_text[:-1]
+                self.backspaced = True
+            else:
+                if self.active == True:
+                    self.user_text += event.unicode
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_BACKSPACE:
+                self.backspaced = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.input_rect.collidepoint(event.pos):
+                self.active = True
+                self.color = self.color_active
+            elif not self.input_rect.collidepoint(event.pos):
+                self.active = False
+                self.color = self.color_passive
+
+    def render(self, window):
+        # pygame.draw.rect(window, self.color, self.input_rect)
+        window.blit(self.surface, (self.input_rect.left, self.input_rect.top))
+        text_surface = self.base_font.render(self.user_text, True, (255, 255, 255))
+        window.blit(text_surface, (self.input_rect.x + 5, self.input_rect.y + 5))
+        self.input_rect.w = max(100, text_surface.get_width() + 10)
+
+    def get_current_text(self):
+        return self.user_text
+
+    def update_position(self, n_point):
+        self.tl_point = n_point
+        self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
+
+
 # Setting up Main Loop
 
 window = pygame.display.set_mode((800, 950))
@@ -126,22 +181,37 @@ bordery = 820
 width = 780
 height = 120
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
+level1_code = Text_Box(Point(25,420), """print("Hello World')""")
+code_list = [level1_code]
 run = True
 
 # Main Loop
 
 while run:
 
+    
+
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             run = False
+        for text_box in code_list:
+            text_box.check_event(event)
         
+
     window.fill(background_color)
+
+    for text_box in code_list:
+        text_box.check_event(event)
 
     # Level 1 test
 
     level1_goal.render_goal(window)
+    render_text(window, "1.", Point(12,18), 40, (255,255,255))
+    for text_box in code_list:
+        text_box.render(window)
+
+    # Time to do this
 
     # Update the screen display
     pygame.display.flip()
