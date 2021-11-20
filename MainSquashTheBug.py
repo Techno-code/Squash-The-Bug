@@ -117,7 +117,7 @@ class Button():
 # Sticky Note Class
 class Text_Box():
     
-    def __init__(self, tl_point, user_text):
+    def __init__(self, window, tl_point, user_text):
         # Positioning
         self.tl_point = tl_point
         self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
@@ -128,6 +128,7 @@ class Text_Box():
         self.color_active = pygame.Color('darkgray')
         self.color_passive = pygame.Color('lightgray')
         self.color = self.color_passive
+        self.window = window
         self.active = False
         self.backspaced = False
         # Render text
@@ -156,9 +157,9 @@ class Text_Box():
 
     def render(self, window):
         # pygame.draw.rect(window, self.color, self.input_rect)
-        window.blit(self.surface, (self.input_rect.left, self.input_rect.top))
+        self.window.blit(self.surface, (self.input_rect.left, self.input_rect.top))
         text_surface = self.base_font.render(self.user_text, True, (255, 255, 255))
-        window.blit(text_surface, (self.input_rect.x + 5, self.input_rect.y + 5))
+        self.window.blit(text_surface, (self.input_rect.x + 5, self.input_rect.y + 5))
         self.input_rect.w = max(100, text_surface.get_width() + 10)
 
     def get_current_text(self):
@@ -167,6 +168,10 @@ class Text_Box():
     def update_position(self, n_point):
         self.tl_point = n_point
         self.input_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, 140, 32)
+
+    def check_win(self, win_text):
+        if self.user_text == win_text:
+            render_text(self.window, "YOU WIN", Point(400,400), 30, (255,255,0))
 
 
 # Setting up Main Loop
@@ -181,7 +186,7 @@ bordery = 820
 width = 780
 height = 120
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
-level1_code = Text_Box(Point(25,420), """print("Hello World')""")
+level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
 code_list = [level1_code]
 run = True
 
@@ -210,6 +215,7 @@ while run:
     render_text(window, "1.", Point(12,18), 40, (255,255,255))
     for text_box in code_list:
         text_box.render(window)
+    level1_code.check_win("""print("Hello World")""")
 
     # Time to do this
 
