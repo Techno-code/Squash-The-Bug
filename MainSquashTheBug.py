@@ -132,7 +132,7 @@ class Text_Box():
         self.backspaced = False
         # Render text
         self.user_text = user_text
-        self.base_font = pygame.font.Font(None, 32)
+        self.base_font = pygame.font.Font(None, 45)
 
     def check_event(self, event):
         if event.type == pygame.KEYDOWN:
@@ -181,7 +181,7 @@ bordery = 820
 width = 780
 height = 120
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
-level1_code = Text_Box(Point(25,50), """print("Hello World')""")
+level1_code = Text_Box(Point(25,420), """print("Hello World')""")
 code_list = [level1_code]
 run = True
 
