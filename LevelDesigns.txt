@@ -1,4 +1,4 @@
-Level 1:
+Level 1: Hello World
 
 Bugged Version:
 print("Hello World')
@@ -8,7 +8,7 @@ Goal: Print "Hello World"
 Solution:
 print("Hello World")
 
-Level 3:
+Level 3: Correct Variable
 Bugged Version:
 a = input("Insert Number: ")
 b = input("Insert Number: ")
@@ -23,7 +23,7 @@ b = int(input("Insert Number: "))
 
 print(a + b)
 
-Level 2:
+Level 2: Input
 Bugged Version:
 spam = Input()
 print(spam)
@@ -33,3 +33,49 @@ Goal: Store your input in spam then print it out
 Winning Version:
 spam = input()
 print(spam)
+
+level 4: Function
+Bugged Version:
+def foo()
+   print("Made Function")
+
+foo()
+
+Goal: Print Made Function using the Foo Function
+
+Winning Version:
+def foo():
+   print("Made Function")
+
+foo()
+
+Level 5: If Statment
+Bugged Version:
+x = 5
+
+if x < 5:
+    print("Less than 5")
+else x >= 5:
+    print("At least 5")
+
+Goal: Using the if statment, find if x is less than 5 or more and print out the result, using the least amount of characters
+
+Winning Version:
+x = 5
+
+if x < 5:
+    print("Less than 5")
+else:
+    print("At least 5")
+
+Level 6: for loops
+Bugged Version:
+
+for i in range(0, 3):
+    print(i, "so far, final i should be 3")
+
+Goal: print out all values of i from 0 - 3 using for loop
+
+Winning Version:
+for i in range(0, 4):
+    print(i, "so far, final i should be 3")
