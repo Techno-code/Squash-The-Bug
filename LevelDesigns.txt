@@ -8,3 +8,28 @@ Goal: Print "Hello World"
 Solution:
 print("Hello World")
 
+Level 3:
+Bugged Version:
+a = input("Insert Number: ")
+b = input("Insert Number: ")
+
+print(a + b)
+
+Goal: Add a and b together and get an integer
+
+Winning version:
+a = int(input("Insert Number: "))
+b = int(input("Insert Number: "))
+
+print(a + b)
+
+Level 2:
+Bugged Version:
+spam = Input()
+print(spam)
+
+Goal: Store your input in spam then print it out
+
+Winning Version:
+spam = input()
+print(spam)

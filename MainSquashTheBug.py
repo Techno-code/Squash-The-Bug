@@ -188,6 +188,7 @@ height = 120
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
 run = True
+current_screen = 2
 
 # Main Loop
 
@@ -199,20 +200,22 @@ while run:
 
         if event.type == pygame.QUIT:
             run = False
-        
-        level1_code.check_event(event)
+        if current_screen == 2:
+            level1_code.check_event(event)
         
 
     window.fill(background_color)
     
-    level1_code.check_event(event)
+    
 
     # Level 1 test
+    if current_screen == 2:
 
-    level1_goal.render_goal(window)
-    render_text(window, "1.", Point(12,18), 40, (255,255,255))
-    level1_code.render(window)
-    level1_code.check_win("""print("Hello World")""")
+        level1_goal.render_goal(window)
+        render_text(window, "1.", Point(12,18), 40, (255,255,255))
+        level1_code.render(window)
+        level1_code.check_win("""print("Hello World")""")
+        level1_code.check_event(event)
 
     # Time to do this
 
