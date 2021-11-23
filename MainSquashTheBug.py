@@ -11,8 +11,9 @@ pygame.init()
 
 # Adding Image
 
-def render_image(window, img_path, point):
+def render_image(window, img_path, point, size):
     img = pygame.image.load(img_path)
+    img = pygame.transform.scale(img, size)
     window.blit(img, (point.x, point.y))
 
 # Adding Text
@@ -94,9 +95,8 @@ def WrapText(surface, text, color, rect, font, aa=False, bkg=None):
 
 
 # Button Class
-
 class Button():
-
+    
     def __init__(self, len, wid, position, color):
         self.len = len
         self.wid = wid
@@ -112,6 +112,11 @@ class Button():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):
                 # Write code in the main event loop if the button.on_click(event) is true
+                return True
+
+    def off_click(self, event):
+        if event.type == pygame.MOUSEBUTTONUP:
+            if self.rect.collidepoint(event.pos):
                 return True
 
 # Sticky Note Class
@@ -185,9 +190,11 @@ borderx = 10
 bordery = 820
 width = 780
 height = 120
+play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
 run = True
+button_clicked = False
 current_screen = 1
 
 # Main Loop
@@ -200,6 +207,7 @@ while run:
 
         if event.type == pygame.QUIT:
             run = False
+
         if current_screen == 3:
             level1_code.check_event(event)
         
@@ -207,7 +215,18 @@ while run:
     window.fill(background_color)
     
     if current_screen == 1:
+        render_image(window, "menu-background.jpg", Point(0,0), (800, 950))
+        render_image(window, "fly-swatter.png", Point(150,270), (200, 300))
         render_text(window, "Squash The Bug", Point(400, 100), 100, (189, 207, 59))
+        play_button.render(window)
+        render_text(window, "Play", Point(400, 635), 40, (0,0,0))
+
+        if play_button.on_click(event) == True and button_clicked == False:
+            current_screen = 3
+            button_clicked = True
+        
+        if play_button.off_click(event) == True:
+            button_clicked = False
 
 
     # Level 1 test
