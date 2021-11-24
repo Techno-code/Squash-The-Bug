@@ -191,6 +191,8 @@ bordery = 820
 width = 780
 height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
+how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
+htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
 run = True
@@ -214,19 +216,52 @@ while run:
 
     window.fill(background_color)
     
+    # Menu Screen
+
     if current_screen == 1:
         render_image(window, "menu-background.jpg", Point(0,0), (800, 950))
         render_image(window, "fly-swatter.png", Point(150,270), (200, 300))
         render_text(window, "Squash The Bug", Point(400, 100), 100, (189, 207, 59))
         play_button.render(window)
         render_text(window, "Play", Point(400, 635), 40, (0,0,0))
+        how_to_play_button.render(window)
+        render_text(window, "How To Play", Point(400, 740), 30, (0,0,0))
 
         if play_button.on_click(event) == True and button_clicked == False:
-            current_screen = 3
             button_clicked = True
+            
         
         if play_button.off_click(event) == True:
             button_clicked = False
+            current_screen = 3
+
+        if how_to_play_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+            print(button_clicked)
+        
+        if how_to_play_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 2
+            print(button_clicked)
+
+    # How to play Screen
+
+    if current_screen == 2:
+        render_text(window, "In order to play this game, you have to click on the textbox shown in every level.", Point(400, 50), 25, (0,255,0))
+        render_text(window, "You can use your keyboard to delete and type in words. The goal of the game", Point(400, 80), 25, (0,255,0))
+        render_text(window, "is to find the bug in the code and fix it to the correct one that completes the goal,", Point(400, 110), 25, (0,255,0))
+        render_text(window, "if it is correct, you win and move on to the next level", Point(400, 140), 25, (0,255,0))
+        render_text(window, "WARNING: I am a very bad game designer,", Point(400, 300), 35, (255,0,0))
+        render_text(window, "so there might be multiple solutions to each problem,", Point(400, 340), 35, (255,0,0))
+        render_text(window, "but just find the one that requires the least amount", Point(400, 380), 35, (255,0,0))   
+        render_text(window, "of tweaking and you would usually get it right!", Point(400, 420), 35, (255,0,0))
+        render_image(window, "how-to-play.png", Point(200, 500), (400, 300))
+        htp_back_button.render(window)
+        render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
+
+        if htp_back_button.on_click(event) == True:
+            current_screen = 1
+            print(button_clicked)
 
 
     # Level 1 test
