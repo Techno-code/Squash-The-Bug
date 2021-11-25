@@ -178,6 +178,36 @@ class Text_Box():
         if self.user_text == win_text:
             render_text(self.window, "YOU WIN", Point(400,400), 30, (255,255,0))
 
+class Level():
+
+    def __init__(self, window, tl_point, number):
+        # Setting it up
+        self.window = window
+        self.tl_point = tl_point
+        # Position
+        self.width = 100
+        self.height = 100
+        # Showing
+        self.number = str(number)
+        self.colour = (4, 118, 208)
+        self.lvl_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, self.width, self.height)
+    
+    def render(self, window):
+        pygame.draw.rect(window, self.colour, self.lvl_rect, border_radius = 4)
+        render_text(self.window, self.number, Point(self.tl_point.x+50, self.tl_point.y+50), 50, (255,255,255))
+    
+    def on_click(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.lvl_rect.collidepoint(event.pos):
+                # Write code in the main event loop if the button.on_click(event) is true
+                return True
+
+    def off_click(self, event):
+        if event.type == pygame.MOUSEBUTTONUP:
+            if self.lvl_rect.collidepoint(event.pos):
+                return True
+
+
 
 # Setting up Main Loop
 
@@ -193,6 +223,7 @@ height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
 htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
+level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
 run = True
@@ -210,7 +241,7 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-        if current_screen == 3:
+        if current_screen == 4:
             level1_code.check_event(event)
         
 
@@ -263,9 +294,20 @@ while run:
             current_screen = 1
             print(button_clicked)
 
+    # Level Selection Screen
+    if current_screen == 3:
+        level1_button.render(window)
+
+        if level1_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+
+        if level1_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 4
+
 
     # Level 1 test
-    if current_screen == 3:
+    if current_screen == 4:
 
         level1_goal.render_goal(window)
         render_text(window, "1.", Point(12,18), 40, (255,255,255))
