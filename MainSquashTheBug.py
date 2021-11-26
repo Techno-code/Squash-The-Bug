@@ -176,7 +176,7 @@ class Text_Box():
 
     def check_win(self, win_text):
         if self.user_text == win_text:
-            render_text(self.window, "YOU WIN", Point(400,400), 30, (255,255,0))
+            return True
 
 class Level():
 
@@ -191,21 +191,33 @@ class Level():
         self.number = str(number)
         self.colour = (4, 118, 208)
         self.lvl_rect = pygame.Rect(self.tl_point.x, self.tl_point.y, self.width, self.height)
+        self.won_stat = False
     
     def render(self, window):
         pygame.draw.rect(window, self.colour, self.lvl_rect, border_radius = 4)
         render_text(self.window, self.number, Point(self.tl_point.x+50, self.tl_point.y+50), 50, (255,255,255))
+        if self.won_stat == True:
+            render_text(self.window, "Level " + self.number + " Completed", Point(400, 700), 25, (0,0,0))
+
+    
+    def if_won(self, new_won_stat):
+        if new_won_stat:
+            self.won_stat = True
+            self.colour = (255,255,0)
+
     
     def on_click(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if self.lvl_rect.collidepoint(event.pos):
-                # Write code in the main event loop if the button.on_click(event) is true
-                return True
+        if self.won_stat == False:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.lvl_rect.collidepoint(event.pos):
+                    # Write code in the main event loop if the button.on_click(event) is true
+                    return True
 
     def off_click(self, event):
-        if event.type == pygame.MOUSEBUTTONUP:
-            if self.lvl_rect.collidepoint(event.pos):
-                return True
+        if self.won_stat == False:
+            if event.type == pygame.MOUSEBUTTONUP:
+                if self.lvl_rect.collidepoint(event.pos):
+                    return True
 
 
 
@@ -222,10 +234,22 @@ width = 780
 height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
+# Back Buttons
 htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
+ls_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
+l1_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+l2_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+# Level 1
 level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
 level1_code = Text_Box(window, Point(25,420), """print("Hello World')""")
+# Level 2
+level2_button = Level(window, Point(250,100), 2)
+level2_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Store your input in spam then print it out")
+level2_code_1 = Text_Box(window, Point(25,350), "spam = Input()")
+level2_code_2 = Text_Box(window, Point(25,400), "print(spam)")
+# Level 3
+level3_button = Level(window, Point(400,100), 3)
 run = True
 button_clicked = False
 current_screen = 1
@@ -243,6 +267,10 @@ while run:
 
         if current_screen == 4:
             level1_code.check_event(event)
+
+        if current_screen == 5:
+            level2_code_1.check_event(event)
+            level2_code_2.check_event(event)
         
 
     window.fill(background_color)
@@ -261,19 +289,16 @@ while run:
         if play_button.on_click(event) == True and button_clicked == False:
             button_clicked = True
             
-        
         if play_button.off_click(event) == True:
             button_clicked = False
             current_screen = 3
 
         if how_to_play_button.on_click(event) == True and button_clicked == False:
             button_clicked = True
-            print(button_clicked)
         
         if how_to_play_button.off_click(event) == True:
             button_clicked = False
             current_screen = 2
-            print(button_clicked)
 
     # How to play Screen
 
@@ -292,11 +317,14 @@ while run:
 
         if htp_back_button.on_click(event) == True:
             current_screen = 1
-            print(button_clicked)
 
     # Level Selection Screen
     if current_screen == 3:
         level1_button.render(window)
+        level2_button.render(window)
+        level3_button.render(window)
+        ls_back_button.render(window)
+        render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
         if level1_button.on_click(event) == True and button_clicked == False:
             button_clicked = True
@@ -305,6 +333,17 @@ while run:
             button_clicked = False
             current_screen = 4
 
+        if level2_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+
+        if level2_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 5
+
+        if ls_back_button.on_click(event) == True:
+            current_screen = 1
+
+
 
     # Level 1 test
     if current_screen == 4:
@@ -312,8 +351,38 @@ while run:
         level1_goal.render_goal(window)
         render_text(window, "1.", Point(12,18), 40, (255,255,255))
         level1_code.render(window)
-        level1_code.check_win("""print("Hello World")""")
         level1_code.check_event(event)
+
+        l1_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+        if level1_code.check_win("""print("Hello World")"""):
+            level1_button.if_won(True)
+            current_screen = 3
+        
+        if l1_back_button.on_click(event) == True:
+            current_screen = 3
+
+    # Level 2
+    if current_screen == 5:
+
+        level2_goal.render_goal(window)
+        render_text(window, "2.", Point(18,21), 40, (255,255,255))
+        level2_code_1.render(window)
+        level2_code_1.check_event(event)
+        level2_code_2.render(window)
+        level2_code_2.check_event(event)
+
+        l2_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+
+        if level2_code_1.check_win("""spam = input()""") and level2_code_2.check_win("""print(spam)"""):
+            level2_button.if_won(True)
+            current_screen = 3
+
+        if l2_back_button.on_click(event) == True:
+            current_screen = 3
 
     # Time to do this
 
