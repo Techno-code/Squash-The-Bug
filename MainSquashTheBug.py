@@ -5,6 +5,8 @@
 import pygame
 import random
 
+from pygame import cursors
+
 pygame.init()
 
 # Functions and class
@@ -197,7 +199,7 @@ class Level():
         pygame.draw.rect(window, self.colour, self.lvl_rect, border_radius = 4)
         render_text(self.window, self.number, Point(self.tl_point.x+50, self.tl_point.y+50), 50, (255,255,255))
         if self.won_stat == True:
-            render_text(self.window, "Level " + self.number + " Completed", Point(400, 700), 25, (0,0,0))
+            render_text(self.window, "Level " + self.number + " Completed", Point(400, 680+int(self.number)*20), 25, (0,0,0))
 
     
     def if_won(self, new_won_stat):
@@ -239,6 +241,8 @@ htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
 ls_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
 l1_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l2_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+l3_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 # Level 1
 level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
@@ -250,6 +254,16 @@ level2_code_1 = Text_Box(window, Point(25,350), "spam = Input()")
 level2_code_2 = Text_Box(window, Point(25,400), "print(spam)")
 # Level 3
 level3_button = Level(window, Point(400,100), 3)
+level3_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Add variables a and b together and print out an integer")
+level3_code_1 = Text_Box(window, Point(25,350), """a = input("Insert Number: ")""")
+level3_code_2 = Text_Box(window, Point(25,400), """b = input("Insert Number: ")""")
+level3_code_3 = Text_Box(window, Point(25,500), """print(a + b)""")
+# Level 4
+level4_button = Level(window, Point(550,100), 4)
+level4_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Made Function using the Foo Function")
+level4_code_1 = Text_Box(window, Point(25,350), """def foo()""")
+level4_code_2 = Text_Box(window, Point(75,400), """print("Made Function")""")
+level4_code_3 = Text_Box(window, Point(25,500), """foo()""")
 run = True
 button_clicked = False
 current_screen = 1
@@ -271,6 +285,17 @@ while run:
         if current_screen == 5:
             level2_code_1.check_event(event)
             level2_code_2.check_event(event)
+
+        if current_screen == 6:
+            level3_code_1.check_event(event)
+            level3_code_2.check_event(event)
+            level3_code_3.check_event(event)
+
+        if current_screen == 7:
+            level4_code_1.check_event(event)
+            level4_code_2.check_event(event)
+            level4_code_3.check_event(event)
+
         
 
     window.fill(background_color)
@@ -323,6 +348,7 @@ while run:
         level1_button.render(window)
         level2_button.render(window)
         level3_button.render(window)
+        level4_button.render(window)
         ls_back_button.render(window)
         render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
@@ -340,6 +366,20 @@ while run:
             button_clicked = False
             current_screen = 5
 
+        if level3_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+
+        if level3_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 6
+
+        if level4_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+
+        if level4_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 7
+
         if ls_back_button.on_click(event) == True:
             current_screen = 1
 
@@ -351,7 +391,7 @@ while run:
         level1_goal.render_goal(window)
         render_text(window, "1.", Point(12,18), 40, (255,255,255))
         level1_code.render(window)
-        level1_code.check_event(event)
+        #level1_code.check_event(event)
 
         l1_back_button.render(window)
         render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
@@ -369,9 +409,9 @@ while run:
         level2_goal.render_goal(window)
         render_text(window, "2.", Point(18,21), 40, (255,255,255))
         level2_code_1.render(window)
-        level2_code_1.check_event(event)
+        #level2_code_1.check_event(event)
         level2_code_2.render(window)
-        level2_code_2.check_event(event)
+        #level2_code_2.check_event(event)
 
         l2_back_button.render(window)
         render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
@@ -383,6 +423,45 @@ while run:
 
         if l2_back_button.on_click(event) == True:
             current_screen = 3
+
+    # Level 3
+    if current_screen == 6:
+        level3_goal.render_goal(window)
+        render_text(window, "3.", Point(18,21), 40, (255,255,255))
+        level3_code_1.render(window)
+        level3_code_2.render(window)
+        level3_code_3.render(window)
+        # level3_code_1.check_event(window)
+        # level3_code_2.check_event(window)
+        # level3_code_3.check_event(window)
+
+        l3_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        if level3_code_1.check_win("""a = int(input("Insert Number: "))""") and level3_code_2.check_win("""b = int(input("Insert Number: "))""") and level3_code_3.check_win("""print(a + b)"""):
+            level3_button.if_won(True)
+            current_screen = 3
+
+        if l3_back_button.on_click(event) == True:
+            current_screen = 3
+    # Level 4
+    if current_screen == 7:
+        level4_goal.render_goal(window)
+        render_text(window, "4.", Point(18,21), 40, (255,255,255))
+        level4_code_1.render(window)
+        level4_code_2.render(window)
+        level4_code_3.render(window)
+
+        l4_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        if level4_code_1.check_win("""def foo():""") and level4_code_2.check_win("""print("Made Function")""") and level4_code_3.check_win("""foo()"""):
+            level4_button.if_won(True)
+            current_screen = 3
+
+        if l4_back_button.on_click(event) == True:
+            current_screen = 3
+
+
+
 
     # Time to do this
 
