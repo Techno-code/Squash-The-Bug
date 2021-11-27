@@ -205,7 +205,7 @@ class Level():
     def if_won(self, new_won_stat):
         if new_won_stat:
             self.won_stat = True
-            self.colour = (255,255,0)
+            self.colour = (13, 152, 186)
 
     
     def on_click(self, event):
@@ -244,6 +244,7 @@ l2_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l3_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l5_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+l6_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 # Level 1
 level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
@@ -266,13 +267,18 @@ level4_code_1 = Text_Box(window, Point(25,350), """def foo()""")
 level4_code_2 = Text_Box(window, Point(75,400), """print("Made Function")""")
 level4_code_3 = Text_Box(window, Point(25,500), """foo()""")
 # Level 5
-level5_button = Level(window, Point(100,225), 5)
+level5_button = Level(window, Point(100,250), 5)
 level5_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Using the if statment, find if x is less than 5 or more and print out the result, using the least amount of characters")
 level5_code_1 = Text_Box(window, Point(25,250), """x = 5""")
 level5_code_2 = Text_Box(window, Point(25,350), """if x < 5:""")
 level5_code_3 = Text_Box(window, Point(75,400), """print("Less than 5")""")
 level5_code_4 = Text_Box(window, Point(25,450), """else x >= 5:""")
 level5_code_5 = Text_Box(window, Point(75,500), """print("At least 5")""")
+# Level 6
+level6_button = Level(window, Point(250,250), 6)
+level6_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: print out all values of i from 0 - 3 using the for loop")
+level6_code_1 = Text_Box(window, Point(25,400), """for i in range(0, 3):""")
+level6_code_2 = Text_Box(window, Point(75,450), """print(i, "so far, final i should be 3")""")
 
 run = True
 button_clicked = False
@@ -312,6 +318,10 @@ while run:
             level5_code_3.check_event(event)
             level5_code_4.check_event(event)
             level5_code_5.check_event(event)
+        
+        if current_screen == 9:
+            level6_code_1.check_event(event)
+            level6_code_2.check_event(event)
 
         
 
@@ -367,6 +377,7 @@ while run:
         level3_button.render(window)
         level4_button.render(window)
         level5_button.render(window)
+        level6_button.render(window)
         ls_back_button.render(window)
         render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
@@ -405,7 +416,13 @@ while run:
             button_clicked = False
             current_screen = 8
         
+        if level6_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
+        if level6_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 9
+        
         if ls_back_button.on_click(event) == True:
             current_screen = 1
 
@@ -504,6 +521,19 @@ while run:
             current_screen = 3
 
         if l5_back_button.on_click(event) == True:
+            current_screen = 3
+
+    if current_screen == 9:
+        level6_goal.render_goal(window)
+        render_text(window, "6.", Point(18,21), 40, (255,255,255))
+        level6_code_1.render(window)
+        level6_code_2.render(window)
+
+        l6_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+        if level6_code_1.check_win("for i in range(0, 4):") and level6_code_2.check_win("""print(i, "so far, final i should be 3")"""):
+            level6_button.if_won(True)
             current_screen = 3
 
 

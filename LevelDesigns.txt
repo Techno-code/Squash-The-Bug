@@ -74,7 +74,7 @@ Bugged Version:
 for i in range(0, 3):
     print(i, "so far, final i should be 3")
 
-Goal: print out all values of i from 0 - 3 using for loop
+Goal: print out all values of i from 0 - 3 using the for loop
 
 Winning Version:
 for i in range(0, 4):
