@@ -243,6 +243,7 @@ l1_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l2_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l3_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+l5_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 # Level 1
 level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
@@ -264,6 +265,15 @@ level4_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35
 level4_code_1 = Text_Box(window, Point(25,350), """def foo()""")
 level4_code_2 = Text_Box(window, Point(75,400), """print("Made Function")""")
 level4_code_3 = Text_Box(window, Point(25,500), """foo()""")
+# Level 5
+level5_button = Level(window, Point(100,225), 5)
+level5_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Using the if statment, find if x is less than 5 or more and print out the result, using the least amount of characters")
+level5_code_1 = Text_Box(window, Point(25,250), """x = 5""")
+level5_code_2 = Text_Box(window, Point(25,350), """if x < 5:""")
+level5_code_3 = Text_Box(window, Point(75,400), """print("Less than 5")""")
+level5_code_4 = Text_Box(window, Point(25,450), """else x >= 5:""")
+level5_code_5 = Text_Box(window, Point(75,500), """print("At least 5")""")
+
 run = True
 button_clicked = False
 current_screen = 1
@@ -295,6 +305,13 @@ while run:
             level4_code_1.check_event(event)
             level4_code_2.check_event(event)
             level4_code_3.check_event(event)
+
+        if current_screen == 8:
+            level5_code_1.check_event(event)
+            level5_code_2.check_event(event)
+            level5_code_3.check_event(event)
+            level5_code_4.check_event(event)
+            level5_code_5.check_event(event)
 
         
 
@@ -349,6 +366,7 @@ while run:
         level2_button.render(window)
         level3_button.render(window)
         level4_button.render(window)
+        level5_button.render(window)
         ls_back_button.render(window)
         render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
@@ -379,6 +397,14 @@ while run:
         if level4_button.off_click(event) == True:
             button_clicked = False
             current_screen = 7
+        
+        if level5_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+
+        if level5_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 8
+        
 
         if ls_back_button.on_click(event) == True:
             current_screen = 1
@@ -458,6 +484,26 @@ while run:
             current_screen = 3
 
         if l4_back_button.on_click(event) == True:
+            current_screen = 3
+
+    # level 5
+    if current_screen == 8:
+        level5_goal.render_goal(window)
+        render_text(window, "5.", Point(18,21), 40, (255,255,255))
+        level5_code_1.render(window)
+        level5_code_2.render(window)
+        level5_code_3.render(window)
+        level5_code_4.render(window)
+        level5_code_5.render(window)
+
+        l5_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+        if level5_code_1.check_win("x = 5") and level5_code_2.check_win("if x < 5:") and level5_code_3.check_win("""print("Less than 5")""") and level5_code_4.check_win("else:") and level5_code_5.check_win("""print("At least 5")"""):
+            level5_button.if_won(True)
+            current_screen = 3
+
+        if l5_back_button.on_click(event) == True:
             current_screen = 3
 
 
