@@ -236,6 +236,7 @@ width = 780
 height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
+credits_button = Button(300, 80, Point(250, 800), (244, 236, 93))
 # Back Buttons
 htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
 ls_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
@@ -337,6 +338,9 @@ while run:
         render_text(window, "Play", Point(400, 635), 40, (0,0,0))
         how_to_play_button.render(window)
         render_text(window, "How To Play", Point(400, 740), 30, (0,0,0))
+        credits_button.render(window)
+        render_text(window, "Credits", Point(400, 840), 40, (0,0,0))
+
 
         if play_button.on_click(event) == True and button_clicked == False:
             button_clicked = True
@@ -351,6 +355,13 @@ while run:
         if how_to_play_button.off_click(event) == True:
             button_clicked = False
             current_screen = 2
+        
+        if credits_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+            
+        if credits_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 10
 
     # How to play Screen
 
@@ -536,6 +547,10 @@ while run:
             level6_button.if_won(True)
             current_screen = 3
 
+    if current_screen == 10:
+        render_text(window, 'Created By: Sean Yang', Point(400, 100), 60, (207, 222, 255))
+        render_text(window, "Special Thanks To", Point(400, 275), 60, ((207, 222, 255)))
+        render_text(window, "Rico Zhu", Point(400, 375), 60, (207, 222, 255))
 
 
 
