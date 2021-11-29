@@ -535,10 +535,7 @@ while run:
             current_screen = 3
 
     if current_screen == 9:
-        level6_goal.render_goal(window)
-        render_text(window, "6.", Point(18,21), 40, (255,255,255))
-        level6_code_1.render(window)
-        level6_code_2.render(window)
+        
 
         l6_back_button.render(window)
         render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
@@ -546,6 +543,11 @@ while run:
         if level6_code_1.check_win("for i in range(0, 4):") and level6_code_2.check_win("""print(i, "so far, final i should be 3")"""):
             level6_button.if_won(True)
             current_screen = 3
+        
+        level6_goal.render_goal(window)
+        render_text(window, "6.", Point(18,21), 40, (255,255,255))
+        level6_code_1.render(window)
+        level6_code_2.render(window)
 
     if current_screen == 10:
         render_text(window, 'Created By: Sean Yang', Point(400, 100), 60, (207, 222, 255))
