@@ -237,6 +237,8 @@ height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
 credits_button = Button(300, 80, Point(250, 800), (244, 236, 93))
+background_music = pygame.mixer.Sound('bread.wav')
+
 # Back Buttons
 htp_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
 ls_back_button = Button(150, 75, Point(25, 850), (244, 236, 93))
