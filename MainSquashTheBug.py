@@ -249,6 +249,8 @@ l3_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l5_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l6_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+# Completed Buttons
+l1_completed_button = Button(175, 75, Point(600, 775), (244, 236, 93))
 # Level 1
 level1_button = Level(window, Point(100,100), 1)
 level1_goal = Goal(borderx, bordery, height, width, border_color, text_color, 35, "Goal: Print Out Hello World")
@@ -452,10 +454,6 @@ while run:
 
         l1_back_button.render(window)
         render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
-
-        if level1_code.check_win("""print("Hello World")"""):
-            level1_button.if_won(True)
-            current_screen = 3
         
         if l1_back_button.on_click(event) == True:
             current_screen = 3
