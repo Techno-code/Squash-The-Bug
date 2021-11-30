@@ -249,6 +249,7 @@ l3_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l5_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l6_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+credit_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 # Completed Buttons
 l1_completed_button = Button(175, 75, Point(600, 775), (244, 236, 93))
 # Level 1
@@ -550,10 +551,21 @@ while run:
         level6_code_1.render(window)
         level6_code_2.render(window)
 
+        if l6_back_button.on_click(event) == True:
+            current_screen = 3
+
     if current_screen == 10:
         render_text(window, 'Created By: Sean Yang', Point(400, 100), 60, (207, 222, 255))
         render_text(window, "Special Thanks To", Point(400, 275), 60, ((207, 222, 255)))
         render_text(window, "Rico Zhu", Point(400, 375), 60, (207, 222, 255))
+        render_text(window, "Kelvin Yang", Point(400, 475), 60, (207, 222, 255))
+
+        credit_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+        if credit_back_button.on_click(event) == True:
+            current_screen = 1
+
 
 
 
