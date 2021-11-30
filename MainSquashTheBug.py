@@ -237,6 +237,8 @@ height = 120
 play_button = Button(300, 80, Point(250, 600), (244, 236, 93))
 how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
 credits_button = Button(300, 80, Point(250, 800), (244, 236, 93))
+about_button = Button(200, 80, Point(575, 850), (244, 236, 93))
+about_text = Goal(20, 150, 740, 875, background_color, (192,192,192), 35, "This version contains 6 levels, how to play section, short credits, and no cursor (which I am planning to fix). It also has minimal graphics, some bugs, and only containing the goal and the code, nothing else.")
 pygame.mixer.music.load("bread.wav")  # Add music
 pygame.mixer.music.play(-1)
 
@@ -346,6 +348,8 @@ while run:
         render_text(window, "How To Play", Point(400, 740), 30, (0,0,0))
         credits_button.render(window)
         render_text(window, "Credits", Point(400, 840), 40, (0,0,0))
+        about_button.render(window)
+        render_text(window, "About", Point(670, 890), 40, (0,0,0))
 
 
         if play_button.on_click(event) == True and button_clicked == False:
@@ -368,6 +372,13 @@ while run:
         if credits_button.off_click(event) == True:
             button_clicked = False
             current_screen = 10
+
+        if about_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
+            
+        if about_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 11
 
     # How to play Screen
 
@@ -565,6 +576,10 @@ while run:
 
         if credit_back_button.on_click(event) == True:
             current_screen = 1
+
+    if current_screen == 11:
+        render_text(window, "Version 1.0", Point(400, 75), 70, (192,192,192))
+        about_text.render_goal(window)
 
 
 
