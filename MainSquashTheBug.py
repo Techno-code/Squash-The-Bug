@@ -239,7 +239,7 @@ how_to_play_button = Button(300, 80, Point(250, 700), (244, 236, 93))
 credits_button = Button(300, 80, Point(250, 800), (244, 236, 93))
 about_button = Button(200, 80, Point(575, 850), (244, 236, 93))
 about_text = Goal(20, 150, 740, 875, background_color, (192,192,192), 35, "This version contains 6 levels, how to play section, short credits, and no cursor (which I am planning to fix). It also has minimal graphics, some bugs, and only containing the goal and the code, nothing else.")
-pygame.mixer.music.load("bread.wav")  # Add music
+pygame.mixer.music.load(r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\bread.wav")  # Add music
 pygame.mixer.music.play(-1)
 
 # Back Buttons
@@ -252,6 +252,7 @@ l4_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l5_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 l6_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 credit_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
+about_back_button = Button(150, 75, Point(25, 725), (244, 236, 93))
 # Completed Buttons
 l1_completed_button = Button(175, 75, Point(600, 775), (244, 236, 93))
 # Level 1
@@ -339,8 +340,8 @@ while run:
     # Menu Screen
 
     if current_screen == 1:
-        render_image(window, "menu-background.jpg", Point(0,0), (800, 950))
-        render_image(window, "fly-swatter.png", Point(150,270), (200, 300))
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\menu-background.jpg", Point(0,0), (800, 950))
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\fly-swatter.png", Point(150,270), (200, 300))
         render_text(window, "Squash The Bug", Point(400, 100), 100, (189, 207, 59))
         play_button.render(window)
         render_text(window, "Play", Point(400, 635), 40, (0,0,0))
@@ -391,7 +392,7 @@ while run:
         render_text(window, "so there might be multiple solutions to each problem,", Point(400, 340), 35, (255,0,0))
         render_text(window, "but just find the one that requires the least amount", Point(400, 380), 35, (255,0,0))   
         render_text(window, "of tweaking and you would usually get it right!", Point(400, 420), 35, (255,0,0))
-        render_image(window, "how-to-play.png", Point(200, 500), (400, 300))
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\how-to-play.png", Point(200, 500), (400, 300))
         htp_back_button.render(window)
         render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
@@ -580,6 +581,12 @@ while run:
     if current_screen == 11:
         render_text(window, "Version 1.0", Point(400, 75), 70, (192,192,192))
         about_text.render_goal(window)
+
+        about_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+
+        if about_back_button.on_click(event) == True:
+            current_screen = 1
 
 
 
