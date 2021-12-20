@@ -28,7 +28,7 @@ class Point():
 
 def render_text(window, text, point, font_size, font_colour):
     
-    font = pygame.font.SysFont("arial", font_size)
+    font = pygame.font.SysFont("ayar.ttf", font_size)
     text = font.render(text, True, font_colour)
     text_rect = text.get_rect()
     text_rect.center = (point.x, point.y)
