@@ -339,254 +339,254 @@ while run:
     
     # Menu Screen
 
-    # if current_screen == 1:
-    #     render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\menu-background.jpg", Point(0,0), (800, 950))
-    #     render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\fly-swatter.png", Point(150,270), (200, 300))
-    #     render_text(window, "Squash The Bug", Point(400, 100), 100, (189, 207, 59))
-    #     play_button.render(window)
-    #     render_text(window, "Play", Point(400, 635), 40, (0,0,0))
-    #     how_to_play_button.render(window)
-    #     render_text(window, "How To Play", Point(400, 740), 30, (0,0,0))
-    #     credits_button.render(window)
-    #     render_text(window, "Credits", Point(400, 840), 40, (0,0,0))
-    #     about_button.render(window)
-    #     render_text(window, "About", Point(670, 890), 40, (0,0,0))
+    if current_screen == 1:
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\menu-background.jpg", Point(0,0), (800, 950))
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\fly-swatter.png", Point(150,270), (200, 300))
+        render_text(window, "Squash The Bug", Point(400, 100), 100, (189, 207, 59))
+        play_button.render(window)
+        render_text(window, "Play", Point(400, 635), 40, (0,0,0))
+        how_to_play_button.render(window)
+        render_text(window, "How To Play", Point(400, 740), 30, (0,0,0))
+        credits_button.render(window)
+        render_text(window, "Credits", Point(400, 840), 40, (0,0,0))
+        about_button.render(window)
+        render_text(window, "About", Point(670, 890), 40, (0,0,0))
 
 
-    #     if play_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if play_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
             
-    #     if play_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 3
+        if play_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 3
 
-    #     if how_to_play_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if how_to_play_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
         
-    #     if how_to_play_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 2
+        if how_to_play_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 2
         
-    #     if credits_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if credits_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
             
-    #     if credits_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 10
+        if credits_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 10
 
-    #     if about_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if about_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
             
-    #     if about_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 11
+        if about_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 11
 
-    # # How to play Screen
+    # How to play Screen
 
-    # if current_screen == 2:
-    #     render_text(window, "In order to play this game, you have to click on the textbox shown in every level.", Point(400, 50), 25, (0,255,0))
-    #     render_text(window, "You can use your keyboard to delete and type in words. The goal of the game", Point(400, 80), 25, (0,255,0))
-    #     render_text(window, "is to find the bug in the code and fix it to the correct one that completes the goal,", Point(400, 110), 25, (0,255,0))
-    #     render_text(window, "if it is correct, you win and move on to the next level", Point(400, 140), 25, (0,255,0))
-    #     render_text(window, "WARNING: I am a very bad game designer,", Point(400, 300), 35, (255,0,0))
-    #     render_text(window, "so there might be multiple solutions to each problem,", Point(400, 340), 35, (255,0,0))
-    #     render_text(window, "but just find the one that requires the least amount", Point(400, 380), 35, (255,0,0))   
-    #     render_text(window, "of tweaking and you would usually get it right!", Point(400, 420), 35, (255,0,0))
-    #     render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\how-to-play.png", Point(200, 500), (400, 300))
-    #     htp_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
+    if current_screen == 2:
+        render_text(window, "In order to play this game, you have to click on the textbox shown in every level.", Point(400, 50), 25, (0,255,0))
+        render_text(window, "You can use your keyboard to delete and type in words. The goal of the game", Point(400, 80), 25, (0,255,0))
+        render_text(window, "is to find the bug in the code and fix it to the correct one that completes the goal,", Point(400, 110), 25, (0,255,0))
+        render_text(window, "if it is correct, you win and move on to the next level", Point(400, 140), 25, (0,255,0))
+        render_text(window, "WARNING: I am a very bad game designer,", Point(400, 300), 35, (255,0,0))
+        render_text(window, "so there might be multiple solutions to each problem,", Point(400, 340), 35, (255,0,0))
+        render_text(window, "but just find the one that requires the least amount", Point(400, 380), 35, (255,0,0))   
+        render_text(window, "of tweaking and you would usually get it right!", Point(400, 420), 35, (255,0,0))
+        render_image(window, r"c:\Users\Hongwei\3D Objects\Squash The Bug\data\how-to-play.png", Point(200, 500), (400, 300))
+        htp_back_button.render(window)
+        render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
-    #     if htp_back_button.on_click(event) == True:
-    #         current_screen = 1
+        if htp_back_button.on_click(event) == True:
+            current_screen = 1
 
-    # # Level Selection Screen
-    # if current_screen == 3:
-    #     level1_button.render(window)
-    #     level2_button.render(window)
-    #     level3_button.render(window)
-    #     level4_button.render(window)
-    #     level5_button.render(window)
-    #     level6_button.render(window)
-    #     ls_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
+    # Level Selection Screen
+    if current_screen == 3:
+        level1_button.render(window)
+        level2_button.render(window)
+        level3_button.render(window)
+        level4_button.render(window)
+        level5_button.render(window)
+        level6_button.render(window)
+        ls_back_button.render(window)
+        render_text(window, "< Back", Point(75, 880), 30, (0,0,0))
 
-    #     if level1_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level1_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level1_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 4
+        if level1_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 4
 
-    #     if level2_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level2_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level2_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 5
+        if level2_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 5
 
-    #     if level3_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level3_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level3_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 6
+        if level3_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 6
 
-    #     if level4_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level4_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level4_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 7
+        if level4_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 7
         
-    #     if level5_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level5_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level5_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 8
+        if level5_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 8
         
-    #     if level6_button.on_click(event) == True and button_clicked == False:
-    #         button_clicked = True
+        if level6_button.on_click(event) == True and button_clicked == False:
+            button_clicked = True
 
-    #     if level6_button.off_click(event) == True:
-    #         button_clicked = False
-    #         current_screen = 9
+        if level6_button.off_click(event) == True:
+            button_clicked = False
+            current_screen = 9
         
-    #     if ls_back_button.on_click(event) == True:
-    #         current_screen = 1
+        if ls_back_button.on_click(event) == True:
+            current_screen = 1
 
 
 
-    # # Level 1 test
-    # if current_screen == 4:
+    # Level 1 test
+    if current_screen == 4:
 
-    #     level1_goal.render_goal(window)
-    #     render_text(window, "1.", Point(12,18), 40, (255,255,255))
-    #     level1_code.render(window)
-    #     #level1_code.check_event(event)
+        level1_goal.render_goal(window)
+        render_text(window, "1.", Point(12,18), 40, (255,255,255))
+        level1_code.render(window)
+        #level1_code.check_event(event)
 
-    #     l1_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        l1_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
         
-    #     if l1_back_button.on_click(event) == True:
-    #         current_screen = 3
+        if l1_back_button.on_click(event) == True:
+            current_screen = 3
 
-    # # Level 2
-    # if current_screen == 5:
+    # Level 2
+    if current_screen == 5:
 
-    #     level2_goal.render_goal(window)
-    #     render_text(window, "2.", Point(18,21), 40, (255,255,255))
-    #     level2_code_1.render(window)
-    #     #level2_code_1.check_event(event)
-    #     level2_code_2.render(window)
-    #     #level2_code_2.check_event(event)
+        level2_goal.render_goal(window)
+        render_text(window, "2.", Point(18,21), 40, (255,255,255))
+        level2_code_1.render(window)
+        #level2_code_1.check_event(event)
+        level2_code_2.render(window)
+        #level2_code_2.check_event(event)
 
-    #     l2_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        l2_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
 
 
-    #     if level2_code_1.check_win("""spam = input()""") and level2_code_2.check_win("""print(spam)"""):
-    #         level2_button.if_won(True)
-    #         current_screen = 3
+        if level2_code_1.check_win("""spam = input()""") and level2_code_2.check_win("""print(spam)"""):
+            level2_button.if_won(True)
+            current_screen = 3
 
-    #     if l2_back_button.on_click(event) == True:
-    #         current_screen = 3
+        if l2_back_button.on_click(event) == True:
+            current_screen = 3
 
-    # # Level 3
-    # if current_screen == 6:
-    #     level3_goal.render_goal(window)
-    #     render_text(window, "3.", Point(18,21), 40, (255,255,255))
-    #     level3_code_1.render(window)
-    #     level3_code_2.render(window)
-    #     level3_code_3.render(window)
-    #     # level3_code_1.check_event(window)
-    #     # level3_code_2.check_event(window)
-    #     # level3_code_3.check_event(window)
+    # Level 3
+    if current_screen == 6:
+        level3_goal.render_goal(window)
+        render_text(window, "3.", Point(18,21), 40, (255,255,255))
+        level3_code_1.render(window)
+        level3_code_2.render(window)
+        level3_code_3.render(window)
+        # level3_code_1.check_event(window)
+        # level3_code_2.check_event(window)
+        # level3_code_3.check_event(window)
 
-    #     l3_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
-    #     if level3_code_1.check_win("""a = int(input("Insert Number: "))""") and level3_code_2.check_win("""b = int(input("Insert Number: "))""") and level3_code_3.check_win("""print(a + b)"""):
-    #         level3_button.if_won(True)
-    #         current_screen = 3
+        l3_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        if level3_code_1.check_win("""a = int(input("Insert Number: "))""") and level3_code_2.check_win("""b = int(input("Insert Number: "))""") and level3_code_3.check_win("""print(a + b)"""):
+            level3_button.if_won(True)
+            current_screen = 3
 
-    #     if l3_back_button.on_click(event) == True:
-    #         current_screen = 3
-    # # Level 4
-    # if current_screen == 7:
-    #     level4_goal.render_goal(window)
-    #     render_text(window, "4.", Point(18,21), 40, (255,255,255))
-    #     level4_code_1.render(window)
-    #     level4_code_2.render(window)
-    #     level4_code_3.render(window)
+        if l3_back_button.on_click(event) == True:
+            current_screen = 3
+    # Level 4
+    if current_screen == 7:
+        level4_goal.render_goal(window)
+        render_text(window, "4.", Point(18,21), 40, (255,255,255))
+        level4_code_1.render(window)
+        level4_code_2.render(window)
+        level4_code_3.render(window)
 
-    #     l4_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
-    #     if level4_code_1.check_win("""def foo():""") and level4_code_2.check_win("""print("Made Function")""") and level4_code_3.check_win("""foo()"""):
-    #         level4_button.if_won(True)
-    #         current_screen = 3
+        l4_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        if level4_code_1.check_win("""def foo():""") and level4_code_2.check_win("""print("Made Function")""") and level4_code_3.check_win("""foo()"""):
+            level4_button.if_won(True)
+            current_screen = 3
 
-    #     if l4_back_button.on_click(event) == True:
-    #         current_screen = 3
+        if l4_back_button.on_click(event) == True:
+            current_screen = 3
 
-    # # level 5
-    # if current_screen == 8:
-    #     level5_goal.render_goal(window)
-    #     render_text(window, "5.", Point(18,21), 40, (255,255,255))
-    #     level5_code_1.render(window)
-    #     level5_code_2.render(window)
-    #     level5_code_3.render(window)
-    #     level5_code_4.render(window)
-    #     level5_code_5.render(window)
+    # level 5
+    if current_screen == 8:
+        level5_goal.render_goal(window)
+        render_text(window, "5.", Point(18,21), 40, (255,255,255))
+        level5_code_1.render(window)
+        level5_code_2.render(window)
+        level5_code_3.render(window)
+        level5_code_4.render(window)
+        level5_code_5.render(window)
 
-    #     l5_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        l5_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
 
-    #     if level5_code_1.check_win("x = 5") and level5_code_2.check_win("if x < 5:") and level5_code_3.check_win("""print("Less than 5")""") and level5_code_4.check_win("else:") and level5_code_5.check_win("""print("At least 5")"""):
-    #         level5_button.if_won(True)
-    #         current_screen = 3
+        if level5_code_1.check_win("x = 5") and level5_code_2.check_win("if x < 5:") and level5_code_3.check_win("""print("Less than 5")""") and level5_code_4.check_win("else:") and level5_code_5.check_win("""print("At least 5")"""):
+            level5_button.if_won(True)
+            current_screen = 3
 
-    #     if l5_back_button.on_click(event) == True:
-    #         current_screen = 3
+        if l5_back_button.on_click(event) == True:
+            current_screen = 3
 
-    # if current_screen == 9:
+    if current_screen == 9:
         
 
-    #     l6_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        l6_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
 
-    #     if level6_code_1.check_win("for i in range(0, 4):") and level6_code_2.check_win("""print(i, "so far, final i should be 3")"""):
-    #         level6_button.if_won(True)
-    #         current_screen = 3
+        if level6_code_1.check_win("for i in range(0, 4):") and level6_code_2.check_win("""print(i, "so far, final i should be 3")"""):
+            level6_button.if_won(True)
+            current_screen = 3
         
-    #     level6_goal.render_goal(window)
-    #     render_text(window, "6.", Point(18,21), 40, (255,255,255))
-    #     level6_code_1.render(window)
-    #     level6_code_2.render(window)
+        level6_goal.render_goal(window)
+        render_text(window, "6.", Point(18,21), 40, (255,255,255))
+        level6_code_1.render(window)
+        level6_code_2.render(window)
 
-    #     if l6_back_button.on_click(event) == True:
-    #         current_screen = 3
+        if l6_back_button.on_click(event) == True:
+            current_screen = 3
 
-    # if current_screen == 10:
-    #     render_text(window, 'Created By: Sean Yang', Point(400, 100), 60, (207, 222, 255))
-    #     render_text(window, "Special Thanks To", Point(400, 275), 60, ((207, 222, 255)))
-    #     render_text(window, "Rico Zhu", Point(400, 375), 60, (207, 222, 255))
-    #     render_text(window, "Kelvin Yang", Point(400, 475), 60, (207, 222, 255))
+    if current_screen == 10:
+        render_text(window, 'Created By: Sean Yang', Point(400, 100), 60, (207, 222, 255))
+        render_text(window, "Special Thanks To", Point(400, 275), 60, ((207, 222, 255)))
+        render_text(window, "Rico Zhu", Point(400, 375), 60, (207, 222, 255))
+        render_text(window, "Kelvin Yang", Point(400, 475), 60, (207, 222, 255))
 
-    #     credit_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        credit_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
 
-    #     if credit_back_button.on_click(event) == True:
-    #         current_screen = 1
+        if credit_back_button.on_click(event) == True:
+            current_screen = 1
 
-    # if current_screen == 11:
-    #     render_text(window, "Version 1.0", Point(400, 75), 70, (192,192,192))
-    #     about_text.render_goal(window)
+    if current_screen == 11:
+        render_text(window, "Version 1.0", Point(400, 75), 70, (192,192,192))
+        about_text.render_goal(window)
 
-    #     about_back_button.render(window)
-    #     render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
+        about_back_button.render(window)
+        render_text(window, "< Back", Point(75, 760), 30, (0,0,0))
 
-    #     if about_back_button.on_click(event) == True:
-    #         current_screen = 1
+        if about_back_button.on_click(event) == True:
+            current_screen = 1
 
 
 
