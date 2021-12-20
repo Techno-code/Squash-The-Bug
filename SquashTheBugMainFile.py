@@ -140,7 +140,7 @@ class Text_Box():
         self.backspaced = False
         # Render text
         self.user_text = user_text
-        self.base_font = pygame.font.Font(None, 45)
+        self.base_font = pygame.font.Font(r"data/ayar.ttf", 45)
 
     def check_event(self, event):
         if event.type == pygame.KEYDOWN:
